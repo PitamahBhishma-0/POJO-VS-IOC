@@ -1,16 +1,21 @@
 package pojo.object;
 
 public class Employee {
-           private String ename;
-           private int Salary;
+           private  String ename;
+           private Address address;
            private int eid;
            Employee(){
+        	   System.out.println("---default one----");
            }
            
-           Employee(String name,int salary,int eid){
+           Employee(String name,int eid){
         	   this.eid=eid;
         	   this.ename=name;
-        	   this.Salary=salary;
+        	  
+           }
+           //Constructor Injection
+           Employee(Address address){
+        	   this.address=address;
            }
 
 		public String getEname() {
@@ -21,12 +26,12 @@ public class Employee {
 			this.ename = ename;
 		}
 
-		public int getSalary() {
-			return Salary;
+		public Address getAddress() {
+			return address;
 		}
-
-		public void setSalary(int salary) {
-			Salary = salary;
+        //Setter Injection
+		public void setAddress(Address address) {
+			this.address=address;
 		}
 
 		public int getEid() {
@@ -36,10 +41,15 @@ public class Employee {
 		public void setEid(int eid) {
 			this.eid = eid;
 		}
-
+      
 		@Override
 		public String toString() {
-			return "Employee [ename=" + ename + ", Salary=" + Salary + ", eid=" + eid + "]";
+			return "Employee [ename=" + ename + ", address=" + address + ", eid=" + eid + "]";
 		}
-
+		public void init() {
+			System.out.println("---object initialized---");
+		}
+     public void destroy() {
+    	 System.out.println("---- object destroyed ----");
+     }
 }
